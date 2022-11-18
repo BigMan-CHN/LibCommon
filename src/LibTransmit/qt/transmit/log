@@ -1,0 +1,337 @@
+Makefile:3633: recipe for target 'TransmitClient.o' failed
+arm-hisiv400-linux-g++ -c -pipe -O2 -fPIC -Wall -W -D_REENTRANT -DQT_NO_DEBUG -DQT_CORE_LIB -I. -I/home/develop/libcommon/include -I/home/develop/boost_1_69_0 -I../../../../src -I../../../LibXML -I/home/linkpi/skyvis/3531A/qt-everywhere-opensource-src-5.5.1/H4/include -I/home/linkpi/skyvis/3531A/qt-everywhere-opensource-src-5.5.1/H4/include/QtCore -I. -I/home/linkpi/skyvis/3531A/qt-everywhere-opensource-src-5.5.1/H4/mkspecs/hisiv400 -o RequestHandler.o ../../RequestHandler.cpp
+../../RequestHandler.cpp: In member function ‘void SVS::CRequestHandler::HandleXMLCmdRequest(SVS::SVSBINARY&, SVS::SVSSTRING, SVS::SVSLONG16)’:
+../../RequestHandler.cpp:173:12: warning: unused variable ‘lResponseSize’ [-Wunused-variable]
+  SVSLONG32 lResponseSize;
+            ^
+../../RequestHandler.cpp: At global scope:
+../../RequestHandler.cpp:239:6: warning: unused parameter ‘binResponse’ [-Wunused-parameter]
+ void CRequestHandler::HandleFileRequest( SVSBINARY& binResponse )
+      ^
+In file included from ../../RequestHandler.h:10:0,
+                 from ../../RequestHandler.cpp:1:
+../../TransmitDefines.h:94:18: warning: ‘SVS::SVSSTRING SVS::GetResponseError(SVS::ResponseCode&)’ defined but not used [-Wunused-function]
+ static SVSSTRING GetResponseError(ResponseCode& e)
+                  ^
+arm-hisiv400-linux-g++ -c -pipe -O2 -fPIC -Wall -W -D_REENTRANT -DQT_NO_DEBUG -DQT_CORE_LIB -I. -I/home/develop/libcommon/include -I/home/develop/boost_1_69_0 -I../../../../src -I../../../LibXML -I/home/linkpi/skyvis/3531A/qt-everywhere-opensource-src-5.5.1/H4/include -I/home/linkpi/skyvis/3531A/qt-everywhere-opensource-src-5.5.1/H4/include/QtCore -I. -I/home/linkpi/skyvis/3531A/qt-everywhere-opensource-src-5.5.1/H4/mkspecs/hisiv400 -o TransmitClient.o ../../TransmitClient.cpp
+In file included from ../../TransmitClient.cpp:1:0:
+../../TransmitClient.h: In constructor ‘SVS::CTransmitClient::CTransmitClient(long unsigned int)’:
+../../TransmitClient.h:159:31: warning: ‘SVS::CTransmitClient::_timer’ will be initialized after [-Wreorder]
+  boost::asio::deadline_timer  _timer;
+                               ^
+../../TransmitClient.h:147:31: warning:   ‘boost::asio::ip::tcp::socket SVS::CTransmitClient::_socket’ [-Wreorder]
+  boost::asio::ip::tcp::socket _socket;
+                               ^
+../../TransmitClient.cpp:11:1: warning:   when initialized here [-Wreorder]
+ CTransmitClient::CTransmitClient(unsigned long lTimeout)
+ ^
+In file included from ../../TransmitClient.cpp:1:0:
+../../TransmitClient.h:163:13: warning: ‘SVS::CTransmitClient::_done’ will be initialized after [-Wreorder]
+  bool       _done;
+             ^
+../../TransmitClient.h:157:20: warning:   ‘long unsigned int SVS::CTransmitClient::_limitTime’ [-Wreorder]
+  unsigned long     _limitTime;
+                    ^
+../../TransmitClient.cpp:11:1: warning:   when initialized here [-Wreorder]
+ CTransmitClient::CTransmitClient(unsigned long lTimeout)
+ ^
+In file included from ../../TransmitClient.cpp:1:0:
+../../TransmitClient.h:157:20: warning: ‘SVS::CTransmitClient::_limitTime’ will be initialized after [-Wreorder]
+  unsigned long     _limitTime;
+                    ^
+../../TransmitClient.h:150:17: warning:   ‘SVS::SVSSTRING SVS::CTransmitClient::_ip’ [-Wreorder]
+  SVSSTRING      _ip;
+                 ^
+../../TransmitClient.cpp:11:1: warning:   when initialized here [-Wreorder]
+ CTransmitClient::CTransmitClient(unsigned long lTimeout)
+ ^
+In file included from ../../TransmitClient.cpp:1:0:
+../../TransmitClient.h:170:19: warning: ‘SVS::CTransmitClient::_recved’ will be initialized after [-Wreorder]
+  std::size_t      _recved;
+                   ^
+../../TransmitClient.h:86:15: warning:   ‘SVS::ResponseCode SVS::CTransmitClient::p_code’ [-Wreorder]
+  ResponseCode p_code;
+               ^
+../../TransmitClient.cpp:11:1: warning:   when initialized here [-Wreorder]
+ CTransmitClient::CTransmitClient(unsigned long lTimeout)
+ ^
+../../TransmitClient.cpp: In member function ‘bool SVS::CTransmitClient::Send(const char*, std::size_t)’:
+../../TransmitClient.cpp:220:57: error: no matching function for call to ‘buffer(const char*&)’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+../../TransmitClient.cpp:220:57: note: candidates are:
+In file included from /home/develop/boost_1_69_0/boost/asio/detail/reactive_socket_service.hpp:22:0,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_socket.hpp:40,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_datagram_socket.hpp:20,
+                 from /home/develop/boost_1_69_0/boost/asio.hpp:23,
+                 from ../../TransmitClient.h:12,
+                 from ../../TransmitClient.cpp:1:
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:859:34: note: boost::asio::mutable_buffers_1 boost::asio::buffer(const boost::asio::mutable_buffer&)
+ inline BOOST_ASIO_MUTABLE_BUFFER buffer(
+                                  ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:859:34: note:   no known conversion for argument 1 from ‘const char*’ to ‘const boost::asio::mutable_buffer&’
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:872:34: note: boost::asio::mutable_buffers_1 boost::asio::buffer(const boost::asio::mutable_buffer&, std::size_t)
+ inline BOOST_ASIO_MUTABLE_BUFFER buffer(const mutable_buffer& b,
+                                  ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:872:34: note:   candidate expects 2 arguments, 1 provided
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:889:32: note: boost::asio::const_buffers_1 boost::asio::buffer(const boost::asio::const_buffer&)
+ inline BOOST_ASIO_CONST_BUFFER buffer(
+                                ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:889:32: note:   no known conversion for argument 1 from ‘const char*’ to ‘const boost::asio::const_buffer&’
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:902:32: note: boost::asio::const_buffers_1 boost::asio::buffer(const boost::asio::const_buffer&, std::size_t)
+ inline BOOST_ASIO_CONST_BUFFER buffer(const const_buffer& b,
+                                ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:902:32: note:   candidate expects 2 arguments, 1 provided
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:918:34: note: boost::asio::mutable_buffers_1 boost::asio::buffer(void*, std::size_t)
+ inline BOOST_ASIO_MUTABLE_BUFFER buffer(void* data,
+                                  ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:918:34: note:   candidate expects 2 arguments, 1 provided
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:928:32: note: boost::asio::const_buffers_1 boost::asio::buffer(const void*, std::size_t)
+ inline BOOST_ASIO_CONST_BUFFER buffer(const void* data,
+                                ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:928:32: note:   candidate expects 2 arguments, 1 provided
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:942:34: note: template<class PodType, unsigned int N> boost::asio::mutable_buffers_1 boost::asio::buffer(PodType (&)[N])
+ inline BOOST_ASIO_MUTABLE_BUFFER buffer(PodType (&data)[N]) BOOST_ASIO_NOEXCEPT
+                                  ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:942:34: note:   template argument deduction/substitution failed:
+../../TransmitClient.cpp:220:57: note:   mismatched types ‘PodType [N]’ and ‘const char*’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+In file included from /home/develop/boost_1_69_0/boost/asio/detail/reactive_socket_service.hpp:22:0,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_socket.hpp:40,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_datagram_socket.hpp:20,
+                 from /home/develop/boost_1_69_0/boost/asio.hpp:23,
+                 from ../../TransmitClient.h:12,
+                 from ../../TransmitClient.cpp:1:
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:955:34: note: template<class PodType, unsigned int N> boost::asio::mutable_buffers_1 boost::asio::buffer(PodType (&)[N], std::size_t)
+ inline BOOST_ASIO_MUTABLE_BUFFER buffer(PodType (&data)[N],
+                                  ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:955:34: note:   template argument deduction/substitution failed:
+../../TransmitClient.cpp:220:57: note:   mismatched types ‘PodType [N]’ and ‘const char*’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+In file included from /home/develop/boost_1_69_0/boost/asio/detail/reactive_socket_service.hpp:22:0,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_socket.hpp:40,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_datagram_socket.hpp:20,
+                 from /home/develop/boost_1_69_0/boost/asio.hpp:23,
+                 from ../../TransmitClient.h:12,
+                 from ../../TransmitClient.cpp:1:
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:971:32: note: template<class PodType, unsigned int N> boost::asio::const_buffers_1 boost::asio::buffer(const PodType (&)[N])
+ inline BOOST_ASIO_CONST_BUFFER buffer(
+                                ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:971:32: note:   template argument deduction/substitution failed:
+../../TransmitClient.cpp:220:57: note:   mismatched types ‘const PodType [N]’ and ‘const char*’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+In file included from /home/develop/boost_1_69_0/boost/asio/detail/reactive_socket_service.hpp:22:0,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_socket.hpp:40,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_datagram_socket.hpp:20,
+                 from /home/develop/boost_1_69_0/boost/asio.hpp:23,
+                 from ../../TransmitClient.h:12,
+                 from ../../TransmitClient.cpp:1:
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:985:32: note: template<class PodType, unsigned int N> boost::asio::const_buffers_1 boost::asio::buffer(const PodType (&)[N], std::size_t)
+ inline BOOST_ASIO_CONST_BUFFER buffer(const PodType (&data)[N],
+                                ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:985:32: note:   template argument deduction/substitution failed:
+../../TransmitClient.cpp:220:57: note:   mismatched types ‘const PodType [N]’ and ‘const char*’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+In file included from /home/develop/boost_1_69_0/boost/asio/detail/reactive_socket_service.hpp:22:0,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_socket.hpp:40,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_datagram_socket.hpp:20,
+                 from /home/develop/boost_1_69_0/boost/asio.hpp:23,
+                 from ../../TransmitClient.h:12,
+                 from ../../TransmitClient.cpp:1:
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1071:34: note: template<class PodType, unsigned int N> boost::asio::mutable_buffers_1 boost::asio::buffer(boost::array<PodType, N>&)
+ inline BOOST_ASIO_MUTABLE_BUFFER buffer(
+                                  ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1071:34: note:   template argument deduction/substitution failed:
+../../TransmitClient.cpp:220:57: note:   mismatched types ‘boost::array<PodType, N>’ and ‘const char*’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+In file included from /home/develop/boost_1_69_0/boost/asio/detail/reactive_socket_service.hpp:22:0,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_socket.hpp:40,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_datagram_socket.hpp:20,
+                 from /home/develop/boost_1_69_0/boost/asio.hpp:23,
+                 from ../../TransmitClient.h:12,
+                 from ../../TransmitClient.cpp:1:
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1086:34: note: template<class PodType, unsigned int N> boost::asio::mutable_buffers_1 boost::asio::buffer(boost::array<PodType, N>&, std::size_t)
+ inline BOOST_ASIO_MUTABLE_BUFFER buffer(boost::array<PodType, N>& data,
+                                  ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1086:34: note:   template argument deduction/substitution failed:
+../../TransmitClient.cpp:220:57: note:   mismatched types ‘boost::array<PodType, N>’ and ‘const char*’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+In file included from /home/develop/boost_1_69_0/boost/asio/detail/reactive_socket_service.hpp:22:0,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_socket.hpp:40,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_datagram_socket.hpp:20,
+                 from /home/develop/boost_1_69_0/boost/asio.hpp:23,
+                 from ../../TransmitClient.h:12,
+                 from ../../TransmitClient.cpp:1:
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1102:32: note: template<class PodType, unsigned int N> boost::asio::const_buffers_1 boost::asio::buffer(boost::array<const PodType, N>&)
+ inline BOOST_ASIO_CONST_BUFFER buffer(
+                                ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1102:32: note:   template argument deduction/substitution failed:
+../../TransmitClient.cpp:220:57: note:   mismatched types ‘boost::array<const PodType, N>’ and ‘const char*’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+In file included from /home/develop/boost_1_69_0/boost/asio/detail/reactive_socket_service.hpp:22:0,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_socket.hpp:40,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_datagram_socket.hpp:20,
+                 from /home/develop/boost_1_69_0/boost/asio.hpp:23,
+                 from ../../TransmitClient.h:12,
+                 from ../../TransmitClient.cpp:1:
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1116:32: note: template<class PodType, unsigned int N> boost::asio::const_buffers_1 boost::asio::buffer(boost::array<const PodType, N>&, std::size_t)
+ inline BOOST_ASIO_CONST_BUFFER buffer(boost::array<const PodType, N>& data,
+                                ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1116:32: note:   template argument deduction/substitution failed:
+../../TransmitClient.cpp:220:57: note:   mismatched types ‘boost::array<const PodType, N>’ and ‘const char*’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+In file included from /home/develop/boost_1_69_0/boost/asio/detail/reactive_socket_service.hpp:22:0,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_socket.hpp:40,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_datagram_socket.hpp:20,
+                 from /home/develop/boost_1_69_0/boost/asio.hpp:23,
+                 from ../../TransmitClient.h:12,
+                 from ../../TransmitClient.cpp:1:
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1134:32: note: template<class PodType, unsigned int N> boost::asio::const_buffers_1 boost::asio::buffer(const boost::array<PodType, N>&)
+ inline BOOST_ASIO_CONST_BUFFER buffer(
+                                ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1134:32: note:   template argument deduction/substitution failed:
+../../TransmitClient.cpp:220:57: note:   mismatched types ‘const boost::array<PodType, N>’ and ‘const char*’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+In file included from /home/develop/boost_1_69_0/boost/asio/detail/reactive_socket_service.hpp:22:0,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_socket.hpp:40,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_datagram_socket.hpp:20,
+                 from /home/develop/boost_1_69_0/boost/asio.hpp:23,
+                 from ../../TransmitClient.h:12,
+                 from ../../TransmitClient.cpp:1:
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1148:32: note: template<class PodType, unsigned int N> boost::asio::const_buffers_1 boost::asio::buffer(const boost::array<PodType, N>&, std::size_t)
+ inline BOOST_ASIO_CONST_BUFFER buffer(const boost::array<PodType, N>& data,
+                                ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1148:32: note:   template argument deduction/substitution failed:
+../../TransmitClient.cpp:220:57: note:   mismatched types ‘const boost::array<PodType, N>’ and ‘const char*’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+In file included from /home/develop/boost_1_69_0/boost/asio/detail/reactive_socket_service.hpp:22:0,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_socket.hpp:40,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_datagram_socket.hpp:20,
+                 from /home/develop/boost_1_69_0/boost/asio.hpp:23,
+                 from ../../TransmitClient.h:12,
+                 from ../../TransmitClient.cpp:1:
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1261:34: note: template<class PodType, class Allocator> boost::asio::mutable_buffers_1 boost::asio::buffer(std::vector<_Tp, _Alloc>&)
+ inline BOOST_ASIO_MUTABLE_BUFFER buffer(
+                                  ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1261:34: note:   template argument deduction/substitution failed:
+../../TransmitClient.cpp:220:57: note:   mismatched types ‘std::vector<_Tp, _Alloc>’ and ‘const char*’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+In file included from /home/develop/boost_1_69_0/boost/asio/detail/reactive_socket_service.hpp:22:0,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_socket.hpp:40,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_datagram_socket.hpp:20,
+                 from /home/develop/boost_1_69_0/boost/asio.hpp:23,
+                 from ../../TransmitClient.h:12,
+                 from ../../TransmitClient.cpp:1:
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1285:34: note: template<class PodType, class Allocator> boost::asio::mutable_buffers_1 boost::asio::buffer(std::vector<_Tp, _Alloc>&, std::size_t)
+ inline BOOST_ASIO_MUTABLE_BUFFER buffer(std::vector<PodType, Allocator>& data,
+                                  ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1285:34: note:   template argument deduction/substitution failed:
+../../TransmitClient.cpp:220:57: note:   mismatched types ‘std::vector<_Tp, _Alloc>’ and ‘const char*’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+In file included from /home/develop/boost_1_69_0/boost/asio/detail/reactive_socket_service.hpp:22:0,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_socket.hpp:40,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_datagram_socket.hpp:20,
+                 from /home/develop/boost_1_69_0/boost/asio.hpp:23,
+                 from ../../TransmitClient.h:12,
+                 from ../../TransmitClient.cpp:1:
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1310:32: note: template<class PodType, class Allocator> boost::asio::const_buffers_1 boost::asio::buffer(const std::vector<_Tp, _Alloc>&)
+ inline BOOST_ASIO_CONST_BUFFER buffer(
+                                ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1310:32: note:   template argument deduction/substitution failed:
+../../TransmitClient.cpp:220:57: note:   mismatched types ‘const std::vector<_Tp, _Alloc>’ and ‘const char*’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+In file included from /home/develop/boost_1_69_0/boost/asio/detail/reactive_socket_service.hpp:22:0,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_socket.hpp:40,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_datagram_socket.hpp:20,
+                 from /home/develop/boost_1_69_0/boost/asio.hpp:23,
+                 from ../../TransmitClient.h:12,
+                 from ../../TransmitClient.cpp:1:
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1334:32: note: template<class PodType, class Allocator> boost::asio::const_buffers_1 boost::asio::buffer(const std::vector<_Tp, _Alloc>&, std::size_t)
+ inline BOOST_ASIO_CONST_BUFFER buffer(
+                                ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1334:32: note:   template argument deduction/substitution failed:
+../../TransmitClient.cpp:220:57: note:   mismatched types ‘const std::vector<_Tp, _Alloc>’ and ‘const char*’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+In file included from /home/develop/boost_1_69_0/boost/asio/detail/reactive_socket_service.hpp:22:0,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_socket.hpp:40,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_datagram_socket.hpp:20,
+                 from /home/develop/boost_1_69_0/boost/asio.hpp:23,
+                 from ../../TransmitClient.h:12,
+                 from ../../TransmitClient.cpp:1:
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1358:34: note: template<class Elem, class Traits, class Allocator> boost::asio::mutable_buffers_1 boost::asio::buffer(std::basic_string<_CharT, _Traits, _Alloc>&)
+ inline BOOST_ASIO_MUTABLE_BUFFER buffer(
+                                  ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1358:34: note:   template argument deduction/substitution failed:
+../../TransmitClient.cpp:220:57: note:   mismatched types ‘std::basic_string<_CharT, _Traits, _Alloc>’ and ‘const char*’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+In file included from /home/develop/boost_1_69_0/boost/asio/detail/reactive_socket_service.hpp:22:0,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_socket.hpp:40,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_datagram_socket.hpp:20,
+                 from /home/develop/boost_1_69_0/boost/asio.hpp:23,
+                 from ../../TransmitClient.h:12,
+                 from ../../TransmitClient.cpp:1:
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1382:34: note: template<class Elem, class Traits, class Allocator> boost::asio::mutable_buffers_1 boost::asio::buffer(std::basic_string<_CharT, _Traits, _Alloc>&, std::size_t)
+ inline BOOST_ASIO_MUTABLE_BUFFER buffer(
+                                  ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1382:34: note:   template argument deduction/substitution failed:
+../../TransmitClient.cpp:220:57: note:   mismatched types ‘std::basic_string<_CharT, _Traits, _Alloc>’ and ‘const char*’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+In file included from /home/develop/boost_1_69_0/boost/asio/detail/reactive_socket_service.hpp:22:0,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_socket.hpp:40,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_datagram_socket.hpp:20,
+                 from /home/develop/boost_1_69_0/boost/asio.hpp:23,
+                 from ../../TransmitClient.h:12,
+                 from ../../TransmitClient.cpp:1:
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1405:32: note: template<class Elem, class Traits, class Allocator> boost::asio::const_buffers_1 boost::asio::buffer(const std::basic_string<_CharT, _Traits, _Alloc>&)
+ inline BOOST_ASIO_CONST_BUFFER buffer(
+                                ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1405:32: note:   template argument deduction/substitution failed:
+../../TransmitClient.cpp:220:57: note:   mismatched types ‘const std::basic_string<_CharT, _Traits, _Alloc>’ and ‘const char*’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+In file included from /home/develop/boost_1_69_0/boost/asio/detail/reactive_socket_service.hpp:22:0,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_socket.hpp:40,
+                 from /home/develop/boost_1_69_0/boost/asio/basic_datagram_socket.hpp:20,
+                 from /home/develop/boost_1_69_0/boost/asio.hpp:23,
+                 from ../../TransmitClient.h:12,
+                 from ../../TransmitClient.cpp:1:
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1428:32: note: template<class Elem, class Traits, class Allocator> boost::asio::const_buffers_1 boost::asio::buffer(const std::basic_string<_CharT, _Traits, _Alloc>&, std::size_t)
+ inline BOOST_ASIO_CONST_BUFFER buffer(
+                                ^
+/home/develop/boost_1_69_0/boost/asio/buffer.hpp:1428:32: note:   template argument deduction/substitution failed:
+../../TransmitClient.cpp:220:57: note:   mismatched types ‘const std::basic_string<_CharT, _Traits, _Alloc>’ and ‘const char*’
+    boost::asio::write(_socket, boost::asio::buffer(pData), boost::asio::transfer_all(), ec);
+                                                         ^
+../../TransmitClient.cpp:218:10: warning: unused variable ‘sendbytes’ [-Wunused-variable]
+   size_t sendbytes = 
+          ^
+../../TransmitClient.cpp: At global scope:
+../../TransmitClient.cpp:212:6: warning: unused parameter ‘bytes’ [-Wunused-parameter]
+ bool CTransmitClient::Send(const char * pData, std::size_t bytes)
+      ^
+../../TransmitClient.cpp:338:14: warning: unused parameter ‘oRequest’ [-Wunused-parameter]
+ ResponseCode CTransmitClient::SendXMlCmdRequest( const CData& oRequest , const std::string sCmd)
+              ^
+In file included from ../../TransmitClient.h:10:0,
+                 from ../../TransmitClient.cpp:1:
+../../TransmitDefines.h:94:18: warning: ‘SVS::SVSSTRING SVS::GetResponseError(SVS::ResponseCode&)’ defined but not used [-Wunused-function]
+ static SVSSTRING GetResponseError(ResponseCode& e)
+                  ^
+Makefile:3633: recipe for target 'TransmitClient.o' failed
+make: *** [TransmitClient.o] Error 1

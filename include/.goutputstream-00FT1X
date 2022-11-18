@@ -1,0 +1,154 @@
+/************************************************************************/
+/*
+* Logger.h
+* a cross-platform log tool¡£
+*
+* Copyright (c) 2009, Skyvis
+* All rights reserved.
+*
+* @version		V1.00
+* @author		huchou
+* @date			2009-04-20
+*
+* Example:
+* #include "Logger.h"
+* using namespace SVS::log;
+* 
+SVS::log::CLogger SVS::log::theLogger;
+* int main(int argc, char* argv[])
+* {
+* 	// Only log to console
+* 	theLogger.Create(eLog_DEBUG);
+* 	or
+* 	// Log to console and file
+* 	theLogger.Create("B:\\", "test.log", eLog_DEBUG);
+* 
+* 	LogDebug("debug");
+* 	LogInfo("info");
+* 	LogWarning("warning");
+* 	LogError("error");
+* 	return 0;
+* }
+*************************************************************************/
+#ifndef __SKYVIS_INCLUDE_LOGGER_H__
+#define __SKYVIS_INCLUDE_LOGGER_H__
+
+#include <time.h>
+#include <assert.h>
+#include <iostream>
+#include <string.h>
+#include <stdio.h>
+#include <stdarg.h>
+#include <sstream>
+
+#ifdef _WIN32
+
+#define WIN32_LEAN_AND_MEAN
+
+#include <Windows.h>
+#pragma comment(lib, "Kernel32.lib")
+
+#endif // _WIN32
+
+
+namespace SVS
+{
+    namespace log
+    {
+
+#ifndef ARRSIZE
+#define ARRSIZE(x)	(sizeof(x)/sizeof(x[0]))
+#endif
+
+		enum LogLevel {
+			eLog_DEBUG = 0,
+			eLog_INFO,
+			eLog_WARNING,
+			eLog_ERROR,
+		};
+
+		//////////////////////////////////////////////////////////////////////////
+		// CLogger
+
+		class CLogger
+		{
+		public:
+			CLogger() 
+				: m_fp(NULL)
+				, m_tStarted(0)
+				, m_sLogDir("")
+				, m_sFileName("")
+				, m_uBytesWritten(0)
+				, m_uMaxFileSize((unsigned int)-1)
+				, m_bOpened(false)
+				, m_bLog2File(false)
+				, m_eLogLevel(eLog_INFO)
+			{
+
+			}
+			~CLogger()
+			{
+				Close();
+			}
+
+			bool IsOpen() const { return m_bOpened; }
+			bool IsLog2File() const { return m_bLog2File; }
+			const std::string& GeLogDir() const { return m_sLogDir; }
+			const std::string& GetFileName() const { return m_sFileName; }
+			const LogLevel GetLogLevel() const { return m_eLogLevel; }
+
+			bool Create(LogLevel eLogLevel = eLog_INFO, unsigned int uMaxFileSize = 1024*1024)
+			{
+				Close();
+				m_bLog2File = false;
+				m_eLogLevel = eLogLevel;
+				SetMaxFileSize(uMaxFileSize);
+				return Open();
+			}
+
+			bool Create(const char * pszLogDir, const char * pszFileName, 
+				LogLevel eLogLevel = eLog_INFO, unsigned int uMaxFileSize = 1024*1024)
+			{
+				Close();
+				m_bLog2File = true;
+				m_sLogDir = pszLogDir;
+				m_sFileName = pszFileName;
+				m_eLogLevel = eLogLevel;
+				SetMaxFileSize(uMaxFileSize);
+				return Open();
+			}
+
+			bool Log(LogLevel eLogLevel, std::string& sMsg)
+			{
+				//if (!m_bOpened || eLogLevel < m_eLogLevel)
+				if (eLogLevel < m_eLogLevel)
+					return false;
+
+#ifdef _WIN32
+				printf(sMsg.c_str());
+				OutputDebugString(sMsg.c_str());
+#else
+				printf(sMsg.c_str());
+#endif // _WIN32
+                if (!m_bOpened)
+                    return false;
+				if (!m_bLog2File)
+					return true;
+
+				if (m_fp == NULL)
+					return false;
+
+				size_t uWritten = fwrite(sMsg.c_str(), 1, sMsg.size(), m_fp);
+				bool bResult = !ferror(m_fp);
+				m_uBytesWritten += uWritten;
+
+				if (m_uBytesWritten >= m_uMaxFileSize)
+					StartNewLogFile();
+				else
+					fflush(m_fp);
+
+				return bResult;
+			}
+
+                	/**
+			* 
